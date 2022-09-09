@@ -23,6 +23,7 @@ const sharedQuerySchema = Joi.object({
   attachmentName: Joi.string(),
   scrollPage: Joi.boolean(),
   emulateScreenMedia: Joi.boolean(),
+  emulateTimezone: Joi.string(),
   enableGPU: Joi.boolean(),
   ignoreHttpsErrors: Joi.boolean(),
   waitFor: Joi.alternatives([
@@ -76,6 +77,7 @@ const renderBodyObject = Joi.object({
   scrollPage: Joi.boolean(),
   ignoreHttpsErrors: Joi.boolean(),
   emulateScreenMedia: Joi.boolean(),
+  emulateTimezone: Joi.string(),
   cookies: Joi.array().items(cookieSchema),
   output: Joi.string().valid(['pdf', 'screenshot', 'html']),
   viewport: Joi.object({

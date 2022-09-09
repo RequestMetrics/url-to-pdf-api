@@ -111,6 +111,11 @@ async function render(_opts = {}) {
       await page.emulateMedia('screen');
     }
 
+    if (opts.emulateTimezone) {
+      logger.info(`Emulate timezone... ${opts.emulateTimezone}`);
+      await page.emulateTimezone(opts.emulateTimezone);
+    }
+
     if (opts.cookies && opts.cookies.length > 0) {
       logger.info('Setting cookies..');
 
