@@ -16,7 +16,7 @@ async function createBrowser(opts) {
   if (config.BROWSER_EXECUTABLE_PATH) {
     browserOpts.executablePath = config.BROWSER_EXECUTABLE_PATH;
   }
-  browserOpts.headless = !config.DEBUG_MODE;
+  browserOpts.headless = config.DEBUG_MODE ? true : 'new';
   browserOpts.args = ['--no-sandbox', '--disable-setuid-sandbox'];
   if (!opts.enableGPU || navigator.userAgent.indexOf('Win') !== -1) {
     browserOpts.args.push('--disable-gpu');
@@ -108,7 +108,7 @@ async function render(_opts = {}) {
     await page.setViewport(opts.viewport);
     if (opts.emulateScreenMedia) {
       logger.info('Emulate @media screen..');
-      await page.emulateMedia('screen');
+      await page.emulateMediaType('screen');
     }
 
     if (opts.emulateTimezone) {
